@@ -16,9 +16,9 @@
     $name = "Ankit";
 
 
-    // echo gettype($completed); // print => boolean similarly integer, double and string;
-    // var_dump($completed); // print => Boolean(true) similary integer(3), double(3.3) and string(5)(Ankit);
-    // var_dump($name);
+    echo gettype($completed); // print => boolean similarly integer, double and string;
+    var_dump($completed); // print => Boolean(true) similary integer(3), double(3.3) and string(5)(Ankit);
+    var_dump($name);
 
 
 

@@ -8,7 +8,7 @@ define('PI', '7.14');
 // constants don't have '$' symbol before it.
 echo PI;
 
-// // check a constant is defined or not.
+// check a constant is defined or not.
 echo defined('PI'); // return {1, 0}
 
 // // compile time
@@ -31,6 +31,7 @@ $$foo = 'Raj';
 
 echo "$foo "."$Ankit<br>"; // result => Ankit Raj
 echo "$foo $Ankit"; // result => Ankit Raj
+echo "$foo $$foo"; // result => Ankit Raj
 
 
 /* '?>' this is omitted in case whole code is php only. */

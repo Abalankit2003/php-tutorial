@@ -1,34 +1,34 @@
 <?php
 
 
-    // $i = 3;
+    $i = 3;
     
 
     # anonymous function. They are expressions so needs to be end with a semicolon;
     # To use global variables in anonymous function, we take advantage of use method.
-    // $sum = function (int|float ...$numbers) use ($i) : int|float  { // use ($i) is used for accessing $i from the parent scope.
-    //     echo $i . '<br>';
-    //     return array_sum($numbers);
-    // };
+    $sum = function (int|float ...$numbers) use ($i) : int|float  { // use ($i) is used for accessing $i from the parent scope.
+        echo $i . '<br>';
+        return array_sum($numbers);
+    };
 
     // echo $sum(1,2,3,4,5,6,7,8,9,10).'<br>';
 
 
     # variable function
 
-    // function sum2(int|float ...$numbers) : int|float  { 
-    //     return array_sum($numbers);
-    // };
+    function sum2(int|float ...$numbers) : int|float  { 
+        return array_sum($numbers);
+    };
 
     # $x points to sum2 function.
-    // $x = 'sum2';
+    $x = 'sum2';
 
     # when php detects a function call after a varible name it calls the function which the varible points.
-    // echo $x(2,3,5);
+    echo $x(2,3,5);
 
 
     # callable function
-    // $array = [1, 2, 3, 4];
+    $array = [1, 2, 3, 4];
     // $arr = array_map(function($element){}, $array); // Syntax of a callable function.
     
 

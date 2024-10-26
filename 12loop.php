@@ -2,7 +2,6 @@
 
     $i = 0;
 
-
     # while loop
     while($i<=15) {
         while($i >= 10) {
@@ -81,12 +80,5 @@
     for($j=0;$j<10;$j++) :
         // Do something
     endfor;
-
-
-
-
-
-
-
 
     # Switch control structure is same as all other language.

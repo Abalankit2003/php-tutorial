@@ -3,7 +3,7 @@
 $x = 5;
 
 function foo() {
-    global $x; // Access the global variabl
+    global $x; // Access the global variable
     $GLOBALS['x']; // PHP stores global variables and their values in associative arrays.
 
     echo $x; // 5
@@ -21,7 +21,7 @@ echo '<br>' . $x . '<br>'; // 10
 
 # global => They are destroyed beyound their scopes.
 # static => They retain their value even after their scopes.
-# Below is an example showing both types of varibles.
+# Below is an example showing both types of variables.
 
 
 function getValue() {
