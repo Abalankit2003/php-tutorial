@@ -158,3 +158,19 @@ $merge3 = [7, 8, 9];
 $mergedArray = array_merge($merge1, $merge2, $merge3); // $merge2 will be appended after merge1 and merge3 will be after merge2
 
 dum($mergedArray);
+
+
+
+# 7. array_reduce(array $array, callable $callback, mixed $initialValue = null) : mixed
+
+
+$invoiceItems = [
+    ['price' => 9.99, 'qty' => 3, 'desc' => 'Item 1'],
+    ['price' => 29.99, 'qty' => 1, 'desc' => 'Item 2'],
+    ['price' => 149, 'qty' => 1, 'desc' => 'Item 3'],
+    ['price' => 14.99, 'qty' => 2, 'desc' => 'Item 4'],
+    ['price' => 4.99, 'qty' => 4, 'desc' => 'Item 5'],
+];
+
+
+dum($initialValue);
