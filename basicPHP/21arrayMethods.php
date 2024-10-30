@@ -173,4 +173,60 @@ $invoiceItems = [
 ];
 
 
-dum($initialValue);
+$total = array_reduce($invoiceItems, fn($sum, $item) => $sum + $item['qty'] * $item['price']); // $sum is the value from the previous iteration. Before first iteration its value is 0. If you want to initialize with a value, pass that as third parameter.
+
+echo $total.'<br>';
+
+
+# 8. array_search(mixed $niddle, array $heystack, bool $strict = false) : int|string|false
+
+$arrayForSearch = ['a', 'b', 'c', 'D', 'E', 'ab', 'bc', 'cd', 'b', 'd'];
+
+$key = array_search('D', $arrayForSearch);
+
+echo $key.'<br>';
+
+
+# 9. in_array(mixed $niddle, array $haystack) : bool  => return whether the value exists in the array or not.
+
+
+
+# 10. array_diff(array ...$array) : array => only compares the value of first array with all others and returns an array of elements that was not found in other arrays.
+# 11. array_diff_assoc(array ...$array) : array => compares the key value pairs and does the rest as same as #10
+# 12. array_diff_key(array ...$array) : array => compares the key only and returns an array of non found keys.
+
+
+$diff1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
+$diff2 = ['f' => 4, 'g' => 5, 'h' => 6, 'i' => 7];
+$diff3 = ['l' => 3, 'm' => 9, 'n' => 10];
+
+$diffResult = array_diff_key($diff1, $diff2, $diff3); // experiment here and check the result
+
+dum($diffResult);
+
+# 13. sorting of array.
+/*
+
+    asort(array $array) => sort the array by value
+    ksort(array $array) => sort the array by key
+    usort(array $array, callback fn() => some operation) => sort by using callback and replace the original keys with numeric keys
+
+*/
+
+
+$sortArray = ['a' => 1, 'b' => 2, 'f' => 3, 'd' => 4];
+
+usort($sortArray, fn($a, $b) => $b <=> $a); // experiment with this ans observe the result
+
+dum($sortArray);
+
+
+# 14. destructing an array
+
+$destructArray = [2, 3, 5, 9];
+
+// [a, b, c, d] = $destructArray => This is the common way of destructing
+
+[0 => $b, 3 => $c] = $destructArray; // 2, 9 => This says $b = $destructArray[0]  and $c = $destructArray[3]
+
+echo "$b, $c \n";
