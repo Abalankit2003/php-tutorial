@@ -32,6 +32,7 @@ var_dump($amount2);
 */
 
 
+/*
 
 
 # stdClass
@@ -79,3 +80,45 @@ echo '<br>';
 $b = (object) null;
 
 var_dump($b); // object(stdClass)#4 (0) { } => an empty object
+
+*/
+
+/*
+
+# namespace
+
+// namespace is used when in global scope there are multiple same name variables, functions or classes exist altogther
+require_once '../2constructorPromotion.php';
+require_once "../3namespace.php";
+
+var_dump(new src\namespace\Profile()); // src\namespace is a namespace which is user-defined this points to the file namespace. Go to 3namespace.php to verify
+
+
+use src\promotion\Profile; // This is alternate way to import other namespace in global namespace. This imports Profile class from the namespace defined by src\promotion. If you want to use const or function then use "const" or "function" after use.
+
+var_dump(new Profile());
+
+*/
+
+# alias
+
+require_once '../2constructorPromotion.php';
+require_once "../3namespace.php";
+
+// spl_autoload_register(function($class) { // It removes the overhead of require multiple fully-qualified class file. This requires the file using the namespace naming and a little twiking.
+//     $path = __DIR__ . '../' . lcfirst(str_replace('\\', '/', $class)). '.php';
+
+//     require $path;
+// });
+
+use src\namespace\Profile; // src\namespace\{class1, class2, class3} => to use multiple classes from a single namespace
+use src\promotion\Profile as promotionProfile; // promotionProfile is alias
+
+
+$namespaceProfile = new Profile();
+
+$promotionProfile = new promotionProfile();
+
+var_dump($namespaceProfile);
+echo '<br>';
+var_dump($promotionProfile);

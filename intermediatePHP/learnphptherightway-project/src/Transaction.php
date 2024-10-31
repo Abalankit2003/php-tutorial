@@ -19,7 +19,7 @@ class Transaction
 class Transaction 
 {
     private float $amount;
-    private string $description;
+    private string $description; // typehinting doesn't allow callable in type
 
     public function __construct(float $amount, string $description)
     {
