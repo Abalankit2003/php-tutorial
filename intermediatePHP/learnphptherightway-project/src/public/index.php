@@ -100,10 +100,12 @@ var_dump(new Profile());
 
 */
 
+/*
+
 # alias
 
-require_once '../2constructorPromotion.php';
-require_once "../3namespace.php";
+require_once '../App/2constructorPromotion.php';
+require_once "../App/3namespace.php";
 
 // spl_autoload_register(function($class) { // It removes the overhead of require multiple fully-qualified class file. This requires the file using the namespace naming and a little twiking.
 //     $path = __DIR__ . '../' . lcfirst(str_replace('\\', '/', $class)). '.php';
@@ -122,3 +124,29 @@ $promotionProfile = new promotionProfile();
 var_dump($namespaceProfile);
 echo '<br>';
 var_dump($promotionProfile);
+
+*/
+
+// Before we continue to autoloader, let's discuss about composer. It is a dependency manager for PHP just like npm for node.
+# autoloader => This comes from uuid dependecy
+
+require __DIR__ . '/../vendor/autoload.php';
+
+require "../app/myNamespace.php";
+
+use App\myNamespace\Profile; 
+
+$namespaceProfile = new Profile();
+
+// var_dump(Profile :: STATUS_PAID); // Access const attributes via class name only if it is public
+// var_dump($namespaceProfile :: STATUS_PAID); // Access const attributes via object
+// var_dump(Profile :: class); // "App\myNamespace\Profile"
+
+
+$namespaceProfile->setStatus('paid');
+
+var_dump($namespaceProfile);
+
+// $id = new \Ramsey\Uuid\UuidFactory();
+
+// echo $id->uuid4();

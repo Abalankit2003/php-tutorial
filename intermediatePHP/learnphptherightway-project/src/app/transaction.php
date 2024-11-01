@@ -16,7 +16,7 @@ class Transaction
 */
 
 
-class Transaction 
+class Transaction
 {
     private float $amount;
     private string $description; // typehinting doesn't allow callable in type
