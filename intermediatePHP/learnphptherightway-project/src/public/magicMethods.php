@@ -11,8 +11,8 @@
 class Invoice 
 {
     private float $amount;
-    private int $id;
-    private string $account;
+    private int $id = 2;
+    private string $account = '2836483476';
 
     public function __construct($amount)
     {
@@ -62,7 +62,7 @@ class Invoice
         echo "<br> invoked";
     }
 
-    public function __debugInfo() : ?array
+    public function __debugInfo() : ?array // This methods give you power to return custom template in case the object id var_dump-ed.
     {
         return [
             'id' => $this->id,
@@ -84,4 +84,4 @@ $invoice->process(1, 23, 3);
 echo $invoice; // Hello World
 $invoice(); // invoked
 
-var_dump($invoice);
+var_dump($invoice); // invokedobject(Invoice)#1 (2) { ["id"]=> int(2) ["account"]=> string(6) "****76" }
