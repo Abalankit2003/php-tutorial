@@ -130,7 +130,9 @@ var_dump($promotionProfile);
 // Before we continue to autoloader, let's discuss about composer. It is a dependency manager for PHP just like npm for node.
 # autoloader => This comes from uuid dependecy
 
-require __DIR__ . '/../vendor/autoload.php';
+// require __DIR__ . '/../vendor/autoload.php';
+
+/*
 
 require "../app/myNamespace.php";
 
@@ -150,3 +152,26 @@ var_dump($namespaceProfile);
 // $id = new \Ramsey\Uuid\UuidFactory();
 
 // echo $id->uuid4();
+
+*/
+
+require __DIR__ . '/../vendor/autoload.php';
+
+require '../app/router.php';
+require '../app/Classes/home.php';
+require '../app/Classes/invoice.php';
+
+
+$router = new App\Router();
+
+$router
+    ->get('/', [App\Classes\Home :: class, 'index'])
+    ->get('/invoice', [App\Classes\Invoice :: class, 'index'])
+    ->get('/invoice/create', [App\Classes\Invoice :: class, 'create'])
+    ->post('/invoice/store', [App\Classes\Invoice :: class, 'store']);
+
+echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+
+// echo '<pre>';
+// print_r($router->routes());
+// echo '</pre>';
