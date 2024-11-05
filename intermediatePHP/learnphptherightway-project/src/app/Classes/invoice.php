@@ -22,4 +22,9 @@ class invoice
 
         var_dump($amount);
     }
+
+    public function session() : void
+    {
+        
+    }
 }
