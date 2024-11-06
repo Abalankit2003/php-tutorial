@@ -2,18 +2,21 @@
 
 declare(strict_types = 1);
 
-namespace App\Classes;
+namespace App\Controllers;
 
-class invoice
+class invoiceController
 {
     public function index() : string
     {
-        return 'Invoices';
+        // unset($_SESSION['count']); // It unsets the count
+        return (string) \View :: make('invoices/index');
     }
 
     public function create() : string
     {
-        return '<form action="/invoice/store" method="post"><label>Amount</label><input type="text" name="amount" /></form>';
+        return (string) \View :: make('invoices/create');
+
+        
     }
 
     public function store() : void

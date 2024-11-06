@@ -157,21 +157,47 @@ var_dump($namespaceProfile);
 
 require __DIR__ . '/../vendor/autoload.php';
 
+// session_start(); // you have to start it to access $_SESSION superglobal.
+
 require '../app/router.php';
-require '../app/Classes/home.php';
-require '../app/Classes/invoice.php';
+require '../app/Controllers/HomeController.php';
+require '../app/Controllers/InvoiceController.php';
+
+define('STORAGE_PATH', __DIR__ . '/../storage');
+define('VIEW_PATH', __DIR__ . '/../views');
 
 
 $router = new App\Router();
 
-$router
-    ->get('/', [App\Classes\Home :: class, 'index'])
-    ->get('/invoice', [App\Classes\Invoice :: class, 'index'])
-    ->get('/invoice/create', [App\Classes\Invoice :: class, 'create'])
-    ->post('/invoice/store', [App\Classes\Invoice :: class, 'store']);
 
-echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+try{
+    $router
+        ->get('/', [App\Controllers\HomeController :: class, 'index'])
+        ->get('/download', [App\Controllers\HomeController :: class, 'download'])
+        ->get('/invoice', [App\Controllers\InvoiceController :: class, 'index'])
+        ->get('/invoice/create', [App\Controllers\InvoiceController :: class, 'create'])
+        ->post('/invoice/store', [App\Controllers\InvoiceController :: class, 'store'])
+        ->post('/upload', [App\Controllers\HomeController :: class, 'upload']);
+
+    echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+
+} catch(App\Exceptions\RouteNotFoundException $e) {
+
+    // header('HTTP/1.1 404 Not Found');
+
+    http_response_code(404); 
+    echo View :: make('error/404');
+}
+
+
+
+
+
+
 
 // echo '<pre>';
 // print_r($router->routes());
 // echo '</pre>';
+
+
+// var_dump($_SESSION);

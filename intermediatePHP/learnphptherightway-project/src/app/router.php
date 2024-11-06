@@ -43,18 +43,18 @@ class Router
         $action = $this->routes[$requestMethod][$route] ?? null;
 
         if(!$action) {
-            echo 'Hello';
             throw new RouteNotFoundException();
         }
-
+        
         if(is_callable($action)) {
             call_user_func($action);
         }
-
+        
         if(is_array($action)) {
             [$class, $method] = $action;
-
+            
             if(class_exists($class)) {
+                // echo 'Hello';
                 $class = new $class();
 
                 if(method_exists($class, $method)) {
@@ -64,6 +64,5 @@ class Router
         }
 
         throw new RouteNotFoundException();
-        
     }
 }
