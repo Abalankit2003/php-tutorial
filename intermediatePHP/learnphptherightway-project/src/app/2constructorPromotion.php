@@ -16,7 +16,7 @@ class Transaction
 # nullsafe operator
 
 // Assume getCustomer() returns null, then getPaymentProfile() is trying to access null which will give fatal error. 
-// To avoid this we use ?-> "nullsafe" operator. It works by short-circuiting. Nullsafe operator return null at any point which returns null and all things right of the point will be discarded
+// To avoid this we use ?-> "nullsafe" operator. It works by short-circuiting. Nullsafe operator return null at the point which returns null and all things right of that point will be discarded.
 // echo $transaction->getCustomer()?->getPaymentProfile()?->id;
 
 

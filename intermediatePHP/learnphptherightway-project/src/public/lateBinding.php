@@ -16,7 +16,7 @@ class A
     {
         // return $this->account(); // $this is not allowed in static function
 
-        return static :: $account; // It resolves the late binding of static methods. NOw it will return the $account value of the calling class.
+        return static :: $account; // It resolves the late binding of static methods. Now it will return the $account value of the calling class.
     }
 
     public static function make() : static // this will return the calling class. 

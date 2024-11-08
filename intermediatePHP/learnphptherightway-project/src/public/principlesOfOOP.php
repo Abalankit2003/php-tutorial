@@ -20,6 +20,7 @@
 
 
 
+/*
 class Encapsulation 
 {
     private ?string $name = null; // restricted access
@@ -43,13 +44,15 @@ $ankit = new Encapsulation('Ankit');
 var_dump($ankit->getName());
 
 
-// Trict to access private members via ReflectionProperty api
+// Tric to access private members via ReflectionProperty api
 
 $reflectionProperty = new ReflectionProperty(Encapsulation :: class, 'name');
 
 $reflectionProperty->setAccessible(true);
 
 var_dump($reflectionProperty->getValue($ankit)); // string(5) "Ankit"
+
+*/
 
 
 # 2. Abstraction
@@ -79,9 +82,67 @@ var_dump($reflectionProperty->getValue($ankit)); // string(5) "Ankit"
     3. The principle goes for methods as well.
     4. But in methods overwriting(overriding) signature(return type, method name, method parameters) of the methods must match exactly.
     5. Signature matching doesn't apply to constructor and properties.
-    6. "final" keyword tell PHP to not extend further. It could be used with class and method. Simply put, it stops the inheritance from that point further.
+    6. "final" keyword tell PHP to not override further. It could be used with class and method.
 
     7. In a independent function, if it has a parameter of base class type, child class can be passed to that function, but not the vice-versa.
     8. Inheritance is done by keyword "extends".
 
 */
+
+class Base
+{
+    protected string $name = 'Base';
+    private string $owner = 'Ankit';
+
+    public function __construct() 
+    {
+        echo $this->name . PHP_EOL;
+    }
+
+    private function getName() 
+    {
+        echo $this->name . PHP_EOL;
+    }
+
+    final protected function getValue()
+    {
+        echo $this->name . PHP_EOL;
+    }
+}
+
+class Father extends Base
+{
+    public function __construct() 
+    {
+        echo 'Ankit' . PHP_EOL;
+
+        // echo $this->getName();
+    }
+}
+
+class Child extends Father
+{
+    // protected string $name;
+    
+
+    public function __construct(string $name) 
+    {   
+        // Parent :: __construct();
+
+        // echo $this->owner;
+        
+
+        parent :: getName();
+        // echo $this->name = $name . PHP_EOL;
+    }
+
+}
+
+$obj = new Child('Child');
+
+
+// function helper(Base $input) {
+//     echo $input->getName();
+// }
+
+// helper($obj);

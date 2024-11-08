@@ -31,7 +31,44 @@ var_dump($amount2);
 
 */
 
+// $json = '{"a" : 4, "b" : 5, "c" : 6}';
 
+// $obj = json_decode($json);
+
+// class T
+// {
+//     public int $a = 4, $b = 5, $c = 7;
+
+//     // public function __construct(){}
+
+//     public function getValue() : int
+//     {
+//         return $this->a;
+//     }
+
+// }
+
+// $t = new T();
+
+
+
+// // $str = json_encode($obj); // converts an object properties into corresponding key-value pair in json format; 
+// $str = json_encode($t); // converts 
+
+// print_r($obj);
+// echo PHP_EOL;
+// echo $str;
+
+
+// class T
+// {
+//     public string $name = 'ankit';
+// }
+
+// $obj = new T();
+// $obj->b = 3; // This assigns a property on $obj.
+// echo $obj->b;
+// var_dump($obj);
 /*
 
 
@@ -39,7 +76,7 @@ var_dump($amount2);
 
 $str = '{"a" : 1, "b" : 2, "c" : 3}';
 
-$arr = json_decode($str); // key will become attributes and value will become values of that attributes. Use true as second parameter to get the array instead of object
+$arr = json_decode($str); // key will become public attributes and value will become values of that attributes. Use true as second parameter to get the array instead of object
 
 var_dump($arr); // object(stdClass)#1 (3) { ["a"]=> int(1) ["b"]=> int(2) ["c"]=> int(3) }
 
@@ -91,7 +128,7 @@ var_dump($b); // object(stdClass)#4 (0) { } => an empty object
 require_once '../2constructorPromotion.php';
 require_once "../3namespace.php";
 
-var_dump(new src\namespace\Profile()); // src\namespace is a namespace which is user-defined this points to the file namespace. Go to 3namespace.php to verify
+var_dump(new src\namespace\Profile()); // src\namespace is a namespace which is user-defined, this points to the file namespace. Go to 3namespace.php to verify
 
 
 use src\promotion\Profile; // This is alternate way to import other namespace in global namespace. This imports Profile class from the namespace defined by src\promotion. If you want to use const or function then use "const" or "function" after use.
@@ -127,16 +164,26 @@ var_dump($promotionProfile);
 
 */
 
-// Before we continue to autoloader, let's discuss about composer. It is a dependency manager for PHP just like npm for node.
+// Before we continue to autoloader, let's discuss about composer. It is a dependency manager for PHP just like npm(package manger) for node.
+// Package Manager - is used to configure system, ie to setup your development environment and with these settings you can build many projects.
+
+// Dependency Manager - Is specific to project. You manage all dependencies for a single project and those dependencies are going to be saved on your project. When you start another project you should manage your dependencies again.
+
 # autoloader => This comes from uuid dependecy
 
 // require __DIR__ . '/../vendor/autoload.php';
 
 /*
 
-require "../app/myNamespace.php";
+require __DIR__ . '/../vendor/autoload.php';
 
-use App\myNamespace\Profile; 
+// use check\Profile; 
+
+use check\{validator, checking,Profile};
+// // use check\validator;
+
+$obj1 = new checking();
+$hello = new validator();
 
 $namespaceProfile = new Profile();
 
@@ -155,9 +202,14 @@ var_dump($namespaceProfile);
 
 */
 
+
+/*
+
+# routing in PHP
+
 require __DIR__ . '/../vendor/autoload.php';
 
-// session_start(); // you have to start it to access $_SESSION superglobal.
+// session_start(); // you have to start it to access $_SESSION superglobal. This should be at the top of the code i.e, before sending any header
 
 require '../app/router.php';
 require '../app/Controllers/HomeController.php';
@@ -189,8 +241,33 @@ try{
     echo View :: make('error/404');
 }
 
+*/
 
+// require __DIR__ . '/../vendor/autoload.php';
 
+// use check\{checking,validator};
+// // use check\validator;
+
+// $obj1 = new checking();
+// $obj2 = new validator();
+
+// echo $obj1->name . PHP_EOL;
+// echo $obj2->name . PHP_EOL;
+
+// spl_autoload_register(function($class) { // It removes the overhead of require multiple fully-qualified class file. This requires the file using the namespace naming and a little twiking.
+//     $path = __DIR__ . '/../' . lcfirst(str_replace('\\', '/', $class)). '.php';
+
+//     require $path;
+// });
+
+// use check\{checking,validator};
+// // use check\validator;
+
+// $obj1 = new checking();
+// $obj2 = new validator();
+
+// echo $obj1->name . PHP_EOL;
+// echo $obj2->name . PHP_EOL;
 
 
 

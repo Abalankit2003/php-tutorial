@@ -39,7 +39,7 @@ class Rocky implements DebtCollector
 
 class DebtCollectionService
 {
-    public function collectDebt(DebtCollector $collector) // An class which implements DebtCollector will be accepted here. This is a classical use-case of interface
+    public function collectDebt(DebtCollector $collector) // A class which implements DebtCollector will be accepted here. This is a classical use-case of interface
     {
         $ownedAmount = mt_rand(100, 1000);
         $collectedAmount = $collector->collect($ownedAmount);

@@ -5,7 +5,7 @@
 /*
 
     1. can't instantiate abstract classes
-    2. can contain abstract methods in addition to regular mehtods and properties
+    2. can contain abstract methods in addition to regular methods and properties
     3. "what" is there in abstract class, but not "how"
     4. child classes must implement abstract methods i.e, "how"
 
