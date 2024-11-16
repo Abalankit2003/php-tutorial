@@ -1,5 +1,13 @@
 <?php
 
+/*
+
+    1. An enum (enumeration) in PHP is a user-defined data type introduced in PHP 8.1 that represents a set of predefined, constant values. Enums make code more readable and maintainable by grouping related constants under a single type.
+    2. Enums in PHP are used when you need to define a fixed set of related, constant values, making your code more readable and less error-prone. ex :- Validation, State management, etc.
+
+
+*/
+
 enum Status
 {
     case Active;
