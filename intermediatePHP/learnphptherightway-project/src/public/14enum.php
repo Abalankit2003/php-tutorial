@@ -30,3 +30,5 @@ $status = Status::Active;
 echo getStatusMessage($status); // Output: The status is active.
 
 echo getStatusMessage(Status :: Inactive);
+
+// More to learn
